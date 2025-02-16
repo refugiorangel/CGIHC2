@@ -59,15 +59,61 @@ int main() {
 
 	// Set up vertex data (and buffer(s)) and attribute pointers
 	float vertices[] = {
-		0.5f,  0.5f, 0.0f,    1.0f,0.0f,0.0f,  // top right
-		0.5f, -0.5f, 0.0f,    1.0f,1.0f,0.0f,  // bottom right
-		-0.5f, -0.5f, 0.0f,   1.0f,0.0f,1.0f,  // bottom left
-		-0.5f,  0.5f, 0.0f,   1.0f,1.0f,0.0f, // top left 
+		//Puntos Cabeza
+		-0.571514379f, 0.943139226f, 0.00f,  0.5f, 0.0f, 0.5f,//C=0
+		-0.572411733f, 0.585448842f, 0.00f,  0.5f, 0.0f, 0.5f,//D=1
+		-0.928394144f, 0.586944576f, 0.00f,  0.5f, 0.0f, 0.5f,//E=2
+
+		//Puntos pecho
+		-0.570733978f, 0.73884424f, 0.00f, 1.0f, 0.5f, 0.0f,//F=3
+		-0.569932484f, 0.01383689f, 0.00f, 1.0f, 0.5f, 0.0f,//G=4
+		0.153827133f, 0.014666212f, 0.00f, 1.0f, 0.5f, 0.0f,//H=5
+
+		//Punyos Piernas
+		0.153282769f, -0.71008335f, 0.00f, 0.0f, 0.5f, 1.0f,//L=
+		-0.569932484f, 0.01383689f, 0.00f, 0.0f, 0.5f, 1.0f,//G=
+		0.153827133f, 0.014666212f, 0.00f, 0.0f, 0.5f, 1.0f,//H=5
+
+		//Puntos Manos
+		-0.569593663f, 0.162211236f, 0.00f, 1.0f, 0.0f, 0.0f,//I=
+		-0.824822469f, -0.091923715f, 0.00f, 1.0f, 0.0f, 0.0f,//J=
+		-0.572212468f, -0.344915839f, 0.00f, 1.0f, 0.0f, 0.0f,//K=
+
+		//Puntos Pies
+		0.047394509f, -0.604714471f, 0.00f, 1.0f, 0.5f, 0.7f,//M=
+		-0.3111912f, -0.966878432f, 0.00f, 1.0f, 0.5f, 0.7f,//Q=
+		0.408119728f, -0.967526624f, 0.00f, 1.0f, 0.5f, 0.7f,//N=
+
+		//Puntos Bolsa 1
+		-0.465181101f, -0.604049668f, 0.00f, 0.0f, 1.0f, 0.0f, //S=
+		-0.208359753f, -0.348447583f, 0.00f, 0.0f, 1.0f, 0.0f, //T=
+		0.047394509f, -0.604714471f, 0.00f, 0.0f, 1.0f, 0.0f, //M=
+
+		//Puntos Bolsa 2
+		0.047394509f, -0.604714471f, 0.00f, 0.0f, 1.0f, 0.0f, //M=
+		-0.465181101f, -0.604049668f, 0.00f, 0.0f, 1.0f, 0.0f, //S=
+		-0.209504786f, -0.859894314f, 0.00f, 0.0f, 1.0f, 0.0f, //R=
+
+		////Puntos Cola 1
+		0.667445795f, -0.711771171f, 0.00f, 1.0f, 1.0f, 0.0f,//O=
+		0.920127276f, -0.966665767f, 0.00f, 1.0f, 1.0f, 0.0f,//P=
+		0.153282769f, -0.71008335f, 0.00f, 1.0f, 1.0f, 0.0f,//L=
+
+		//Puntos Cola 2
+		0.153282769f, -0.71008335f, 0.00f, 1.0f, 1.0f, 0.0f,//L=
+		0.408119728f, -0.967526624f, 0.00f, 1.0f, 1.0f, 0.0f,//N=
+		0.920127276f, -0.966665767f, 0.00f, 1.0f, 1.0f, 0.0f,//P=
 	};
 	unsigned int indices[] = {  // note that we start from 0!
-		3,2,1,// second Triangle
-		0,1,3,
-		
+		0,1,2, //Triangulo Cabeza
+		3,4,5, //Triangulo Pecho
+		6,7,8, //Triangulo Piernas
+		9,10,11, //Triangulo manos
+		12,13,14, //Triangulo pies
+		15,16,17, //Triangulo bolsa 1
+		18,19,20, //Triangulo bolsa 2
+		21,22,23, //Triangulo cola 1
+		24,25,26, //Triangulo cola 2
 	};
 
 
@@ -120,14 +166,14 @@ int main() {
         glBindVertexArray(VAO);
 
 
-        glPointSize(3);
-        glDrawArrays(GL_POINTS,0,1);
+        //glPointSize(3);
+        //glDrawArrays(GL_POINTS,0,1);
         
         //glDrawArrays(GL_LINES,0,2);
         //glDrawArrays(GL_LINE_LOOP,0,4);
         
         //glDrawArrays(GL_TRIANGLES,0,3);
-        //glDrawElements(GL_TRIANGLES, 3,GL_UNSIGNED_INT,0);
+        glDrawElements(GL_TRIANGLES, 27,GL_UNSIGNED_INT,0);
 
         
         
