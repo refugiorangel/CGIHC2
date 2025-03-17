@@ -1,9 +1,9 @@
 //Laboratorio Computacion Grafica Grupo 06
-//Previo 6. Carga de modelos
+//Práctica 6. Carga de modelos
 //Aumno: Rangel de la Rosa José Refugio
 //num. de cuenta: 420054559
-//Fecha elaboración: 07 de Marzo de 2025
-//Fecha entrega: 07 de Marzo de 2025
+//Fecha elaboración: 16 de Marzo de 2025
+//Fecha entrega: 16 de Marzo de 2025
 
 // Std. Includes
 #include <string>
@@ -105,9 +105,19 @@ int main( )
     Shader shader( "Shader/modelLoading.vs", "Shader/modelLoading.frag" );
     
     // Load models
-    //Model dog((char*)"Models/RedDog.obj");
+    Model dog((char*)"Models/RedDog.obj");
 
-    Model pepsiman((char*)"Models/Pepsiman/pepsiman.obj");
+    //Model pepsiman((char*)"Models/Pepsiman/pepsiman.obj");
+
+    //Model fuente((char*)"Models/Fountain/fountain.obj");
+
+    //Model templo((char*)"Models/Temple/temple.obj");
+
+    Model venus((char*)"Models/Venu/Venu.obj");
+
+    Model tower((char*)"Models/Tower/tower.obj");
+
+    Model house((char*)"Models/House/house.obj");
 
 
     glm::mat4 projection = glm::perspective( camera.GetZoom( ), ( float )SCREEN_WIDTH/( float )SCREEN_HEIGHT, 0.1f, 100.0f );
@@ -141,14 +151,39 @@ int main( )
         glm::mat4 model(1);
         glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
         
-        //pepsiman.Draw(shader);
+        dog.Draw(shader);
         
-        model = glm::translate(model, glm::vec3(3.0f, 0.0f, 0.0f));
-        model = glm::scale(model, glm::vec3(escalar, escalar, escalar));
-        model = glm::rotate(model, glm::radians(rotar), glm::vec3(0.0f, 1.0f, 0.0f));
-        
-        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(model));
-        pepsiman.Draw(shader);
+        glm::mat4 modelTower = glm::mat4(1.0f);
+        modelTower = glm::translate(modelTower, glm::vec3(10.0f, -0.7f, 0.0f));
+        modelTower = glm::scale(modelTower, glm::vec3(2.0, 2.0, 2.0));
+        modelTower = glm::rotate(modelTower, glm::radians(rotar), glm::vec3(0.0f, 1.0f, 0.0f));
+
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelTower));
+        tower.Draw(shader);
+
+        glm::mat4 modelTower2 = glm::mat4(1.0f);
+        modelTower2 = glm::translate(modelTower2, glm::vec3(-10.0f, -0.7f, 0.0f));
+        modelTower2 = glm::scale(modelTower2, glm::vec3(2.0, 2.0, 2.0));
+        modelTower2 = glm::rotate(modelTower2, glm::radians(rotar), glm::vec3(0.0f, 1.0f, 0.0f));
+
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelTower2));
+        tower.Draw(shader);
+
+        glm::mat4 modelVenus = glm::mat4(1.0f);
+        modelVenus = glm::translate(modelVenus, glm::vec3(-5.0f, -0.5f, 3.0f));
+        modelVenus = glm::scale(modelVenus, glm::vec3(0.03, 0.03, 0.03));
+        modelVenus = glm::rotate(modelVenus, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelVenus));
+        venus.Draw(shader);
+
+        glm::mat4 modelHouse = glm::mat4(1.0f);
+        modelHouse = glm::translate(modelHouse, glm::vec3(0.0f, 2.2f, 0.0f));
+        modelHouse = glm::scale(modelHouse, glm::vec3(25.0f, 25.0f, 25.0f));
+        //modelHouse = glm::rotate(modelHouse, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+        glUniformMatrix4fv(glGetUniformLocation(shader.Program, "model"), 1, GL_FALSE, glm::value_ptr(modelHouse));
+        house.Draw(shader);
 
         // Swap the buffers
         glfwSwapBuffers( window );
