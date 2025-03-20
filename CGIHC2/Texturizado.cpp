@@ -1,9 +1,9 @@
 //Laboratorio Computacion Grafica Grupo 06
-//Previo 7. Texturizado
+//Práctica 7. Texturizado
 //Aumno: Rangel de la Rosa José Refugio
 //num. de cuenta: 420054559
-//Fecha elaboración: 18 de Marzo de 2025
-//Fecha entrega: 18 de Marzo de 2025
+//Fecha elaboración: 19 de Marzo de 2025
+//Fecha entrega: 19 de Marzo de 2025
 
 #include <iostream>
 #include <cmath>
@@ -107,19 +107,62 @@ int main()
 	GLfloat vertices[] =
 	{
 		// Positions            // Colors              // Texture Coords
-		-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,
-		0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		2.0f,0.0f,
-		0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    2.0f,1.0f,
-		-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,
+		//-0.5f, -0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,0.0f,
+		//0.5f, -0.5f, 0.0f,	   1.0f, 1.0f,1.0f,		1.0f,0.0f,
+		//0.5f,  0.5f, 0.0f,     1.0f, 1.0f,1.0f,	    1.0f,1.0f,
+		//-0.5f,  0.5f, 0.0f,    1.0f, 1.0f,1.0f,		0.0f,1.0f,
 
-		
+		//Cara Forntal
+		-0.5f, -0.5f, 0.5f,			1.0f, 1.0f, 1.0f,		0.0f, 0.33f,
+		0.5f, -0.5f, 0.5f,			1.0f, 1.0f, 1.0f,		0.25f, 0.33f,
+		0.5f,  0.5f, 0.5f,			1.0f, 1.0f, 1.0f,		0.25f, 0.67f,
+		-0.5f,  0.5f, 0.5f,			1.0f, 1.0f, 1.0f,		0.0f, 0.67f,
+
+		//Cara Trasera
+		-0.5f, -0.5f,-0.5f,			1.0f, 1.0f, 1.0f,		0.5f, 0.33f,
+		 0.5f, -0.5f,-0.5f,			1.0f, 1.0f, 1.0f,		0.75f, 0.33f,
+		 0.5f,  0.5f,-0.5f,			1.0f, 1.0f, 1.0f,		0.75f, 0.67f,
+		-0.5f,  0.5f,-0.5f,			1.0f, 1.0f, 1.0f,		0.5f, 0.67f,
+
+		//Cara Derecha
+		 0.5f, -0.5f,  0.5f,		1.0f, 1.0f, 1.0f,		0.25f, 0.33f,
+		 0.5f, -0.5f, -0.5f,		1.0f, 1.0f, 1.0f,		0.5f, 0.33f,
+		 0.5f,  0.5f, -0.5f,		1.0f, 1.0f, 1.0f,		0.5f, 0.67f,
+		 0.5f,  0.5f,  0.5f,		1.0f, 1.0f, 1.0f,		0.25f, 0.67f,
+
+		 //Cara Izquierda
+		-0.5f,  0.5f,  0.5f,		1.0f, 1.0f, 0.0f,		0.75f, 0.33f,
+		-0.5f,  0.5f, -0.5f,		1.0f, 1.0f, 0.0f,		1.0f, 0.33f,
+		-0.5f, -0.5f, -0.5f,		1.0f, 1.0f, 0.0f,		1.0f, 0.67f,
+		-0.5f, -0.5f,  0.5f,		1.0f, 1.0f, 0.0f,		0.75f,0.67f,
+
+		//Cara inferior
+		-0.5f, -0.5f, -0.5f,		1.0f, 1.0f, 1.0f,		0.25f, 0.0f,
+		0.5f, -0.5f, -0.5f,			1.0f, 1.0f, 1.0f,		0.5f, 0.0f,
+		0.5f, -0.5f,  0.5f,			1.0f, 1.0f, 1.0f,		0.5f, 0.33,
+		-0.5f, -0.5f,  0.5f,		1.0f, 1.0f, 1.0f,		0.25f, 0.33f,
+
+		//Cara superior
+		-0.5f,  0.5f, -0.5f,		1.0f, 1.0f, 1.0f,		0.25f, 0.67f,
+		0.5f,  0.5f, -0.5f,			1.0f, 1.0f, 1.0f,		0.5f, 0.67f,
+		0.5f,  0.5f,  0.5f,			1.0f, 1.0f, 1.0f,		0.5f, 1.0f,
+		-0.5f,  0.5f,  0.5f,		1.0f, 1.0f, 1.0f,		0.25f, 1.0f,
 	};
 
 	GLuint indices[] =
 	{  // Note that we start from 0!
 		0,1,3,
-		1,2,3
-	
+		1,2,3,
+		4,5,7,
+		5,6,7,
+		8,9,11,
+		9,10,11,
+		12,13,15,
+		13,14,15,
+		16,17,19,
+		17,18,19,
+		20,21,23,
+		21,22,23,
 	};
 
 	// First, set the container's VAO (and VBO)
@@ -161,7 +204,8 @@ int main()
 	//image = stbi_load("images/checker_Tex.png", &textureWidth, &textureHeight, &nrChannels,0);
 	//image = stbi_load("images/pared.png", &textureWidth, &textureHeight, &nrChannels,0);
 	//image = stbi_load("images/window.png", &textureWidth, &textureHeight, &nrChannels, 0);
-	image = stbi_load("images/arbol.png", &textureWidth, &textureHeight, &nrChannels, 0);
+	/*image = stbi_load("images/arbol.png", &textureWidth, &textureHeight, &nrChannels, 0);*/
+	image = stbi_load("images/rubik.png", &textureWidth, &textureHeight, &nrChannels, 0);
 	glBindTexture(GL_TEXTURE_2D, texture1);
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, textureWidth, textureHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, image);
 	glGenerateMipmap(GL_TEXTURE_2D);
@@ -216,7 +260,7 @@ int main()
 		glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
 		// Draw the light object (using light's vertex attributes)
 		glBindVertexArray(VAO);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawElements(GL_TRIANGLES, 36, GL_UNSIGNED_INT, 0);
 		glBindVertexArray(0);
 
 		// Swap the screen buffers
